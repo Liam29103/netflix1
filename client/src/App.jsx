@@ -4,9 +4,11 @@ import Home from "./pages/home/Home";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
+import {useContext} from "react";
+import {AuthContext} from "./authContext/AuthContext";
 
 const App = () => {
-    const user = true;
+    const {user} = useContext(AuthContext);
     return (
         <Router>
             <Switch>
@@ -22,7 +24,7 @@ const App = () => {
                 {user && (
                     <>
                         <Route path="/movies">
-                            <Home type="movie" />
+                            <Home type="movies" />
                         </Route>
                         <Route path="/series">
                             <Home type="series" />

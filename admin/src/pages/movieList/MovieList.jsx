@@ -33,9 +33,9 @@ export default function MovieList() {
             },
         },
         {field: "genre", headerName: "Genre", width: 120},
-        {field: "year", headerName: "Year", width: 120},
-        {field: "limit", headerName: "Limit", width: 120},
-        {field: "isSeries", headerName: "IsSeries", width: 150},
+        {field: "year", headerName: "year", width: 120},
+        {field: "limit", headerName: "limit", width: 120},
+        {field: "isSeries", headerName: "isSeries", width: 120},
 
         {
             field: "action",
@@ -44,7 +44,7 @@ export default function MovieList() {
             renderCell: (params) => {
                 return (
                     <>
-                        <Link to={{pathname: "/product/" + params.row._id, movie: params.row}}>
+                        <Link to={{pathname: "/movie/" + params.row._id, movie: params.row}}>
                             <button className="productListEdit">Edit</button>
                         </Link>
                         <DeleteOutline className="productListDelete" onClick={() => handleDelete(params.row._id)} />

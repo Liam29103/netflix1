@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import "./product.css";
+import "./movie.css";
 
 import {Publish} from "@material-ui/icons";
 import {useLocation} from "react-router-dom/cjs/react-router-dom.min";
@@ -11,7 +11,7 @@ export default function Product() {
         <div className="product">
             <div className="productTitleContainer">
                 <h1 className="productTitle">Movie</h1>
-                <Link to="/newproduct">
+                <Link to="/newMovie">
                     <button className="productAddButton">Create</button>
                 </Link>
             </div>

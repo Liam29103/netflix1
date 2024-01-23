@@ -13,7 +13,7 @@ export default function ListItem({index, item}) {
             try {
                 const res = await axios.get("/movies/find/" + item, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWQ0MmYxMmViZTM3NDExMDY5MjFjYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcwNTU1MzU5MywiZXhwIjoxNzA1OTg1NTkzfQ.6Z5I7Ci88kmI9qvcTVMiYtO_xu31b2fG7n9IvR-Fcyo",
+                        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
                     },
                 });
                 setMovie(res.data);
@@ -23,6 +23,7 @@ export default function ListItem({index, item}) {
         };
         getMovie();
     }, [item]);
+
     return (
         <Link to="/watch" state={{movie: movie}}>
             <div
@@ -33,7 +34,8 @@ export default function ListItem({index, item}) {
                 <img src={movie?.imgSm} alt="" />
                 {isHovered && (
                     <>
-                        <video src={movie.trailer} autoPlay={true} loop />
+                        {movie?.trailer && <video src={movie.trailer} autoPlay={true} loop />}
+
                         <div className="itemInfo">
                             <div className="icons">
                                 <PlayArrow className="icon" />
@@ -42,12 +44,12 @@ export default function ListItem({index, item}) {
                                 <ThumbDownOutlined className="icon" />
                             </div>
                             <div className="itemInfoTop">
-                                <span>{movie.duration}</span>
-                                <span className="limit">+{movie.limit}</span>
-                                <span>{movie.year}</span>
+                                <span>{movie?.duration}</span>
+                                <span className="limit">+{movie?.limit}</span>
+                                <span>{movie?.year}</span>
                             </div>
-                            <div className="desc">{movie.desc}</div>
-                            <div className="genre">{movie.genre}</div>
+                            <div className="desc">{movie?.desc}</div>
+                            <div className="genre">{movie?.genre}</div>
                         </div>
                     </>
                 )}

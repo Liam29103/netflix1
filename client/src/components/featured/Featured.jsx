@@ -1,9 +1,9 @@
 import {InfoOutlined, PlayArrow} from "@material-ui/icons";
-import "./featured.scss";
-import {useEffect, useState} from "react";
 import axios from "axios";
+import {useEffect, useState} from "react";
+import "./featured.scss";
 
-export default function Featured({type}) {
+export default function Featured({type, setGenre}) {
     const [content, setContent] = useState({});
 
     useEffect(() => {
@@ -11,7 +11,7 @@ export default function Featured({type}) {
             try {
                 const res = await axios.get(`/movies/random?type=${type}`, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWQ0MmYxMmViZTM3NDExMDY5MjFjYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcwNTU1MzU5MywiZXhwIjoxNzA1OTg1NTkzfQ.6Z5I7Ci88kmI9qvcTVMiYtO_xu31b2fG7n9IvR-Fcyo",
+                        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
                     },
                 });
                 setContent(res.data[0]);
@@ -26,8 +26,8 @@ export default function Featured({type}) {
         <div className="featured">
             {type && (
                 <div className="category">
-                    <span>{type === "movie" ? "Movies" : "Series"}</span>
-                    <select name="genre" id="genre">
+                    <span>{type === "movies" ? "Movies" : "Series"}</span>
+                    <select name="genre" id="genre" onChange={(e) => setGenre(e.target.value)}>
                         <option>Genre</option>
                         <option value="adventure">Adventure</option>
                         <option value="comedy">Comedy</option>
@@ -45,7 +45,7 @@ export default function Featured({type}) {
                     </select>
                 </div>
             )}
-            <img src={content.img} alt="" />
+            <img src={content.imgSm} alt="" />
             <div className="info">
                 <img src={content.imgTitle} alt="" />
                 <span className="desc">{content.desc}</span>
@@ -56,7 +56,7 @@ export default function Featured({type}) {
                     </button>
                     <button className="more">
                         <InfoOutlined />
-                        <span> More Info</span>
+                        <span>Info</span>
                     </button>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import {useContext, useState} from "react";
-import "./newProduct.css";
+import "./newMovie.css";
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 import {storage} from "../../firebase";
 import {createMovie} from "../../context/movieContext/apiCalls";
@@ -58,7 +58,7 @@ export default function NewMovie() {
             {file: video, label: "video"},
         ]);
     };
-    console.log(movie);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         createMovie(movie, dispatch);
