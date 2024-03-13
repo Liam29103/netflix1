@@ -2,11 +2,13 @@ import "./listItem.scss";
 import {PlayArrow, Add, ThumbUpAltOutlined, ThumbDownOutlined} from "@material-ui/icons";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Link} from "react-router-dom";
+
+import {useHistory} from "react-router-dom/cjs/react-router-dom.min";
 
 export default function ListItem({index, item}) {
     const [isHovered, setIsHovered] = useState(false);
     const [movie, setMovie] = useState({});
+    const history = useHistory();
 
     useEffect(() => {
         const getMovie = async () => {
@@ -24,8 +26,12 @@ export default function ListItem({index, item}) {
         getMovie();
     }, [item]);
 
+    const handleRedirect = (movie) => {
+        history.push("/watch", {movie: movie});
+    };
     return (
-        <Link to="/watch" state={{movie: movie}}>
+        // ListItem.js
+        <a href="/watch" onClick={() => handleRedirect(movie)}>
             <div
                 className="listItem"
                 style={{left: isHovered && index * 225 - 50 + index * 2.5}}
@@ -34,8 +40,7 @@ export default function ListItem({index, item}) {
                 <img src={movie?.imgSm} alt="" />
                 {isHovered && (
                     <>
-                        {movie?.trailer && <video src={movie.trailer} autoPlay={true} loop />}
-
+                        <video src={movie.trailer} autoPlay={true} loop />
                         <div className="itemInfo">
                             <div className="icons">
                                 <PlayArrow className="icon" />
@@ -44,16 +49,15 @@ export default function ListItem({index, item}) {
                                 <ThumbDownOutlined className="icon" />
                             </div>
                             <div className="itemInfoTop">
-                                <span>{movie?.duration}</span>
-                                <span className="limit">+{movie?.limit}</span>
-                                <span>{movie?.year}</span>
+                                <span className="limit">+{movie.limit}</span>
+                                <span>{movie.year}</span>
                             </div>
-                            <div className="desc">{movie?.desc}</div>
-                            <div className="genre">{movie?.genre}</div>
+                            <div className="desc">{movie.desc}</div>
+                            <div className="genre">{movie.genre}</div>
                         </div>
                     </>
                 )}
             </div>
-        </Link>
+        </a>
     );
 }

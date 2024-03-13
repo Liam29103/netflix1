@@ -32,7 +32,10 @@ export default function Login() {
                         Sign In
                     </button>
                     <span>
-                        New to Netflix? <b>Sign up now.</b>
+                        New to Netflix?{" "}
+                        <b>
+                            <a href="/register">Sign up now.</a>
+                        </b>
                     </span>
                     <small>
                         This page is protected by Google reCAPTCHA to ensure you're not a bot. <b>Learn more</b>.

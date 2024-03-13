@@ -1,7 +1,7 @@
 import {ArrowDropDown, Notifications, Search} from "@material-ui/icons";
 import {useContext, useState} from "react";
 import "./Navbar.scss";
-import {Link} from "react-router-dom";
+
 import {AuthContext} from "../../authContext/AuthContext";
 import {logout} from "../../authContext/AuthActions";
 
@@ -17,18 +17,18 @@ const Navbar = () => {
         <div className={isScrolled ? "navbar scrolled" : "navbar"}>
             <div className="container">
                 <div className="left">
-                    <Link to="/" className="link">
+                    <a href="/" className="a">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png" alt="" />
-                    </Link>
-                    <Link to="/" className="link">
+                    </a>
+                    <a href="/" className="a">
                         <span>Home</span>
-                    </Link>
-                    <Link to="/series" className="link">
+                    </a>
+                    <a href="/series" className="a">
                         <span className="navbarmainLinks">Series</span>
-                    </Link>
-                    <Link to="/movies" className="link">
+                    </a>
+                    <a href="/movies" className="a">
                         <span className="navbarmainLinks">Movies</span>
-                    </Link>
+                    </a>
 
                     <span>New & Popular</span>
                     <span>My List</span>

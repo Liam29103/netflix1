@@ -22,6 +22,7 @@ export default function Featured({type, setGenre}) {
         getRandomContent();
     }, [type]);
 
+    console.log(content);
     return (
         <div className="featured">
             {type && (
@@ -45,7 +46,7 @@ export default function Featured({type, setGenre}) {
                     </select>
                 </div>
             )}
-            <img src={content.imgSm} alt="" />
+            <img src={content.img} alt="" />
             <div className="info">
                 <img src={content.imgTitle} alt="" />
                 <span className="desc">{content.desc}</span>

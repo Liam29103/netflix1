@@ -2,10 +2,11 @@
     --main-color: #0b0b0b;
 }
 
-.link {
+.a {
     color: inherit;
     text-decoration: none;
 }
+
 @mixin tablet {
     @media (max-width: 768px) {
         @content;

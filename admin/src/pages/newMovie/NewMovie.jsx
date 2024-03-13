@@ -96,10 +96,7 @@ export default function NewMovie() {
                     <label>Genre</label>
                     <input type="text" placeholder="Genre" name="genre" onChange={handleChange} />
                 </div>
-                <div className="addProductItem">
-                    <label>Duration</label>
-                    <input type="text" placeholder="Duration" name="duration" onChange={handleChange} />
-                </div>
+
                 <div className="addProductItem">
                     <label>Limit</label>
                     <input type="text" placeholder="limit" name="limit" onChange={handleChange} />
