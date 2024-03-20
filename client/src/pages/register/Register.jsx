@@ -17,6 +17,7 @@ export default function Register() {
     const handleStart = () => {
         setEmail(emailRef.current.value);
     };
+
     const handleFinish = async (e) => {
         e.preventDefault();
         setPassword(passwordRef.current.value);
@@ -28,6 +29,7 @@ export default function Register() {
             console.log(err);
         }
     };
+
     return (
         <div className="register">
             <div className="top">
@@ -37,8 +39,7 @@ export default function Register() {
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
                         alt=""
                     />
-
-                    <button className="loginButton">Sign In</button>
+                    <button className="loginButton">SignIn</button>
                 </div>
             </div>
             <div className="container">

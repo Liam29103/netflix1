@@ -42,7 +42,9 @@ const Navbar = () => {
                         <ArrowDropDown className="icon" />
                         <div className="options">
                             <span>Settings</span>
-                            <span onClick={() => dispatch(logout())}>Logout</span>
+                            <a className="a" href="/login">
+                                <span onClick={() => dispatch(logout())}>Logout</span>
+                            </a>
                         </div>
                     </div>
                 </div>
